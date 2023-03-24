@@ -21,7 +21,7 @@ class ChallengeFactory extends Factory
     {
         return [
             'title' => $title =  fake()->words(nb: 2, asText: true),
-            'slug' => Str::slug($title) . '-' . now(),
+            'slug' => Str::slug($title) . '-' . now()->format('YdmHis'),
             'image' => fake()->imageUrl(),
             'level' => fake()->randomElement( array: ['Low', 'Medium', 'High', 'Super-high']),
             'description' => fake()->paragraph(variableNbSentences: true),

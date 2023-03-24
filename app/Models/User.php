@@ -48,7 +48,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function challenge(): HasMany
+    public function challenges(): HasMany
     {
         return $this->hasMany(Challenge::class);
     }

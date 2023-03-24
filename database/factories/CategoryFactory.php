@@ -19,7 +19,7 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => $name = fake()->words(asText: true),
-            'slug' => Str::slug($name) . '-' . now()
+            'slug' => Str::slug($name) . '-' . now()->format('YdmHis')
         ];
     }
 }

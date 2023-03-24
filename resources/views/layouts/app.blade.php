@@ -14,8 +14,8 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <body class="font-mono antialiased">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900 overflow-y-hidden pb-10 flex flex-col">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -28,9 +28,11 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="flex-1">
                 {{ $slot }}
             </main>
+            <!-- Footer -->
+            <footer class="p-10 mx-auto text-gray-300 uppercase">Copyrirght &copy; TAOB. All rights reserved</footer>
         </div>
     </body>
 </html>
