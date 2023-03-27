@@ -16,18 +16,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\Challenge::factory(10)->create();
+        $this->call(CategorySeeder::class);
 
         User::factory()->create([
             'name' => 'Thierno Amadou Oury Balde',
             'email' => 'admin@email.com',
         ]);
 
-        User::factory()
-            ->count(10)
-            ->has(
-                Challenge::factory()->count(3)
-                ->has(Category::factory())
-            )->create();
+        Challenge::factory()
+            ->count(100)
+            ->create();
     }
 }

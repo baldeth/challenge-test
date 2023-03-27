@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $challenges = Challenge::with('category', 'user')->get();
+        $challenges = Challenge::with('category', 'user')->latest()->get();
         return view('dashboard', compact('categories', 'challenges'));
     }
 

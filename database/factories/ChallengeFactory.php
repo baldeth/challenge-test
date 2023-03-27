@@ -20,13 +20,13 @@ class ChallengeFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $title =  fake()->words(nb: 2, asText: true),
-            'slug' => Str::slug($title) . '-' . now()->format('YdmHis'),
+            'title' => $title =  fake()->words(2, true),
+            'slug' => Str::slug($title) . '-' . now()->getPreciseTimestamp(3),
             'image' => fake()->imageUrl(),
-            'level' => fake()->randomElement( array: ['Low', 'Medium', 'High', 'Super-high']),
-            'description' => fake()->paragraph(variableNbSentences: true),
-            'user_id'=> User::factory(),
-            'category_id'=> Category::factory()
+            'level' => fake()->randomElement(['Low', 'Medium', 'High', 'Super-high']),
+            'description' => fake()->paragraph(3, true),
+            'user_id' => User::query()->inRandomOrder()->first()->id,
+            'category_id' => Category::inRandomOrder()->first()->id
         ];
     }
 }

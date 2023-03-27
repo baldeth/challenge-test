@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        // $challenges = Challenge::with(('category'))->where('category_id', $category->id)->get();
-        return view('categories.show', compact('category'));
+        $categories = Category::with('challenges')->latest()->get();
+        return view('categories.show', compact('category', 'categories'));
     }
 }

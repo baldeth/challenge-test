@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
     use HasFactory;
+    protected $fillables = [
+        'name',
+        'slug',
+    ];
 
     /**
      * Get all of the challenge for the Category

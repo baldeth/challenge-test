@@ -8,16 +8,36 @@
     <div class="py-12">
         <div class="max-w-[2400px] mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between overflow-y-hidden">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-1/3">
-                            <img class="h-full w-full object-cover self-center ..." src="https://images.unsplash.com/photo-1514897575457-c4db467cf78e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=384" alt="" />
-                        </div>
+                <div class="h-screen p-6 text-gray-900 dark:text-gray-100 flex justify-between overflow-y-hidden">
 
-                        <div class="w-2/3">
-                          <h3 class="text-xl font-medium mb-2">{{ $challenge->title }}</p>
+                    @include('partials/categories')
+
+                    <main class="w-5/6 flex flex-col mx-auto p-8 overflow-y-auto">
+                        <h2 class="text-4xl text-center capitalize font-bold">{{ $challenge->title }}</h2>
+                        <hr class="w-full my-12">
+                        <div class="flex justify-between bg-gray-200 text-black p-16">
+                            <div class="w-1/3">
+                                <img src="{{ asset('/storage/'. $challenge->image) }}" onerror="this.onerror=null;this.src='{{ asset('/storage/challenges/' . 'default.png') }}'" alt="" class="rounded-xl w-full object-contains">
+                            </div>
+                            <div class="px-10 flex text-xl flex-col justify-between">
+                                <div class="space-y-8">
+                                    <p>{{ $challenge->description }}</p>
+                                    <p>{{ $challenge->category->name }}</p>
+                                    <p>{{ $challenge->level }}</p>
+                                </div>
+                                @if(auth()->id() == $challenge->user->id)
+                                <div class="flex justify-between">
+                                    <div>{{ $challenge->created_at }}</div>
+                                    <div>{{ $challenge->user->name }} ({{ $challenge->user->email }})</div>
+                                </div>
+                                @endif
+                            </div>
                         </div>
-                      </div>
+                        <div class="mt-24 flex items-center space-x-10 mx-auto">
+                            <a href="" class="px-24 py-4 rounded-lg etxt-xl font-semibold tracking-wider leading-10 bg-gray-300 text-gray-800 hover:bg-gray-400">Edit</a>
+                            <a href="" class="px-24 py-4 rounded-lg etxt-xl font-semibold tracking-wider leading-10 bg-red-300 text-red-800 hover:bg-red-400">Delete</a>
+                        </div>
+                    </main>
                 </div>
             </div>
         </div>

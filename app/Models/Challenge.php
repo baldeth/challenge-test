@@ -10,6 +10,16 @@ class Challenge extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'slug',
+        'image',
+        'level',
+        'description',
+        'category_id',
+        'user_id',
+    ];
+
     /**
      * Get the user that owns the Challenge
      *
